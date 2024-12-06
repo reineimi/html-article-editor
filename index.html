@@ -8,6 +8,7 @@
 	<link rel='stylesheet' href='https://reineimi.github.io/va2/lib/va2.css'>
 
 	<style>
+	.theme-light { --highlight: var(--blue); }
 	#editor {
 		margin: auto;
 		width: 90vmin;
@@ -18,6 +19,7 @@
 		white-space: pre;
 		background: var(--windowFg);
 	}
+	#editor:focus { outline: none; }
 	#generated {
 		overflow: scroll;
 		width: 90vmin;
@@ -46,12 +48,12 @@
 
 	<div class='i bounded'>
 		<div id='editor' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
-		<div class='badge abs rtop'>INPUT: Rich Text</div>
+		<div class='badge abs rtop nosel nil'>INPUT: Rich Text</div>
 	</div>
 
 	<div class='i bounded' style='margin-bottom: 0'>
 		<div id='generated'></div>
-		<div class='badge abs rtop' style='background: var(--green)'>OUTPUT: HTML</div>
+		<div class='badge abs rtop nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
 	</div>
 
 	<div id='copy' class='abs w center pt nosel'
@@ -61,15 +63,14 @@
 	emi('editor').oninput = ()=>{
 		emi('generated').textContent = emi('editor').innerHTML
 		.replaceAll(/<br[ ]?[\/]?>/g, '')
-		.replaceAll(/[ ]?style="((?!>).)+"/g, '')
-		.replaceAll(/<span((?!>).)+>/g, '')
+		.replaceAll(/[ ]?style="[^>]+"/g, '')
+		.replaceAll(/<span[^>]+>/g, '')
 		.replaceAll('<span>', '')
 		.replaceAll('</span>', '')
 		.replaceAll('><', '>\n<')
 		.replaceAll('<h', '\n<h')
-		.replaceAll(/([ ]?dir=".+")/g, '')
-		.replaceAll(/(&.+;)/g, '')
-		.replace('\n', '');
+		.replaceAll(/([ ]?dir="[^>]+")/g, '')
+		.replaceAll(/(&.+;)/g, '');
 	}
 	</script>
 </body>
