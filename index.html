@@ -15,7 +15,8 @@
 	.theme-light { --highlight: var(--blue); }
 	#editor {
 		margin: auto;
-		width: 90vmin;
+		width: 45rem;
+		max-width: 90vmin;
 		height: 90vmin;
 		overflow: scroll;
 		padding: 1rem 2rem;
@@ -27,7 +28,8 @@
 	#editor:focus { outline: none; }
 	#generated {
 		overflow: scroll;
-		width: 90vmin;
+		width: 45rem;
+		max-width: 90vmin;
 		height: calc(90vmin - 4rem);
 		white-space: pre;
 		border: 2px solid var(--green);
@@ -40,7 +42,8 @@
 		color: #fff;
 		background: var(--green);
 		height: 4rem;
-		width: 90vmin;
+		width: 45rem;
+		max-width: 90vmin;
 		font-size: 1.4rem;
 	}
 	#copy:hover { filter: brightness(1.1) }
