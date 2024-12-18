@@ -87,17 +87,17 @@
 			//.replaceAll('><', '>\n<')
 			.replaceAll('<h', '\n\n<h')
 			.replaceAll('<p', '\n<p')
-			.replaceAll('<ol>', '\n<ol>\n')
-			.replaceAll('</ol><li>', '</ol>\n<li>')
-			.replaceAll('<ul>', '\n<ul>\n')
-			.replaceAll('</ul><li>', '</ul>\n<li>')
-			.replaceAll('</li>', '</li>\n')
+			.replaceAll('<ol>', '\n<ol>')
+			.replaceAll('</ol>', '\n</ol>')
+			.replaceAll('<ul>', '\n<ul>')
+			.replaceAll('</ul>', '\n</ul>')
 			.replaceAll('<div', '\n<div')
 			.replaceAll(/([ ]?dir="[^>]+")/g, '')
 			.replaceAll(/(&.+;)/g, '')
 			.replaceAll(/^\n/g, '')
 			.replaceAll(/<div>[\n]?<\/div>/g, '')
 			.replaceAll('<li>\n', '<li>')
+			.replaceAll('<li>', '\n<li>')
 			.replaceAll(/([\n]?)+\n$/g, '');
 		}
 	}
