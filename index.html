@@ -69,17 +69,21 @@
 		onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
 
 	<script>
-	emi('editor').oninput = ()=>{
-		emi('generated').textContent = emi('editor').innerHTML
-		.replaceAll(/<br[ ]?[\/]?>/g, '')
-		.replaceAll(/[ ]?style="[^>]+"/g, '')
-		.replaceAll(/<span[^>]+>/g, '')
-		.replaceAll('<span>', '')
-		.replaceAll('</span>', '')
-		.replaceAll('><', '>\n<')
-		.replaceAll('<h', '\n<h')
-		.replaceAll(/([ ]?dir="[^>]+")/g, '')
-		.replaceAll(/(&.+;)/g, '');
+	window.onload = ()=>{
+		emi('editor').oninput = ()=>{
+			emi('generated').textContent = emi('editor').innerHTML
+			.replaceAll(/<br[ ]?[\/]?>/g, '')
+			.replaceAll(/[ ]?style="[^>]+"/g, '')
+			.replaceAll(/<span[^>]+>/g, '')
+			.replaceAll('<span>', '')
+			.replaceAll('</span>', '')
+			.replaceAll('><', '>\n<')
+			.replaceAll('<h', '\n<h')
+			.replaceAll(/([ ]?dir="[^>]+")/g, '')
+			.replaceAll(/(&.+;)/g, '')
+			.replaceAll(/^\n/g, '')
+			.replaceAll(/<div>\n<\/div>/g, '');
+		}
 	}
 	</script>
 </body>
