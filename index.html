@@ -71,18 +71,32 @@
 	<script>
 	window.onload = ()=>{
 		emi('editor').oninput = ()=>{
+			// Replace bold text
+			for (const match of emi('editor').innerHTML.matchAll(/<[^<]+font-weight: 700[^>]+>[^>]+<\/span>/g)) {
+				let str = match[0].replaceAll(/<\/?span([^>]+)?>/g, '');
+				emi('editor').innerHTML = emi('editor').innerHTML.replace(match[0], '<b>'+str+'</b>');
+			}
+			// Remove artifacts
 			emi('generated').textContent = emi('editor').innerHTML
+			.replaceAll(/<span >/g, '')
 			.replaceAll(/<br[ ]?[\/]?>/g, '')
 			.replaceAll(/[ ]?style="[^>]+"/g, '')
 			.replaceAll(/<span[^>]+>/g, '')
 			.replaceAll('<span>', '')
 			.replaceAll('</span>', '')
-			.replaceAll('><', '>\n<')
-			.replaceAll('<h', '\n<h')
+			//.replaceAll('><', '>\n<')
+			.replaceAll('<h', '\n\n<h')
+			.replaceAll('<p', '\n<p')
+			.replaceAll('<ol>', '\n<ol>\n')
+			.replaceAll('<ul>', '\n<ul>\n')
+			.replaceAll('</li>', '</li>\n')
+			.replaceAll('<div', '\n<div')
 			.replaceAll(/([ ]?dir="[^>]+")/g, '')
 			.replaceAll(/(&.+;)/g, '')
 			.replaceAll(/^\n/g, '')
-			.replaceAll(/<div>\n<\/div>/g, '');
+			.replaceAll(/<div>[\n]?<\/div>/g, '')
+			.replaceAll('<li>\n', '<li>')
+			.replaceAll(/([\n]?)+\n$/g, '');
 		}
 	}
 	</script>
