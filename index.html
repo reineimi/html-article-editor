@@ -94,11 +94,11 @@
 			.replaceAll('<div', '\n<div')
 			.replaceAll(/([ ]?dir="[^>]+")/g, '')
 			.replaceAll(/(&.+;)/g, '')
-			.replaceAll(/^\n/g, '')
 			.replaceAll(/<div>[\n]?<\/div>/g, '')
 			.replaceAll('<li>\n', '<li>')
 			.replaceAll('<li>', '\n<li>')
-			.replaceAll(/([\n]?)+\n$/g, '');
+			.replaceAll(/([\n]?)+\n$/g, '')
+			.replaceAll(/^\n/g, '');
 		}
 	}
 	</script>
