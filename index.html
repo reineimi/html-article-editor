@@ -12,13 +12,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
 	<style>
-	:root { --padding: 3rem; --one-half: 50%; }
+	:root { --padding: 3rem; --one-half: 50%; --height: calc(95dvh - 3.5rem); }
 	.w1-2 { width: calc(var(--one-half) - var(--padding)); }
 	.theme-light { --highlight: var(--blue); }
 
 	#editor {
 		margin: auto;
-		height: calc(95vmin - 3.5rem);
+		height: var(--height);
 		overflow: scroll;
 		padding: 1rem 2rem;
 		border: 2px solid var(--blue);
@@ -30,7 +30,7 @@
 
 	#generated {
 		overflow: scroll;
-		height: calc(95vmin - 3.5rem);
+		height: var(--height);
 		white-space: pre;
 		border: 2px solid var(--green);
 		padding: 0.5rem 1rem;
@@ -104,8 +104,8 @@
 			.replace(/^[\n]+/g, '');
 		}
 		vport(
-			()=>{ css('one-half', '50%'); },
-			()=>{ css('one-half', '100%'); },
+			()=>{ css('one-half', '50%'); css('height', 'calc(95dvh - 3.5rem)'); },
+			()=>{ css('one-half', '100%'); css('height', 'calc(47dvh - 3.5rem)'); },
 		180);
 	}
 	</script>
