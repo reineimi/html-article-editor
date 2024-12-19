@@ -12,12 +12,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
 	<style>
+	:root { --padding: 3rem; --one-half: 50%; }
+	.w1-2 { width: calc(var(--one-half) - var(--padding)); }
 	.theme-light { --highlight: var(--blue); }
+
 	#editor {
 		margin: auto;
-		width: 45rem;
-		max-width: 90vmin;
-		height: 90vmin;
+		height: calc(95vmin - 3.5rem);
 		overflow: scroll;
 		padding: 1rem 2rem;
 		border: 2px solid var(--blue);
@@ -26,46 +27,48 @@
 		color: var(--fontColorX);
 	}
 	#editor:focus { outline: none; }
+
 	#generated {
 		overflow: scroll;
-		width: 45rem;
-		max-width: 90vmin;
-		height: calc(90vmin - 4rem);
+		height: calc(95vmin - 3.5rem);
 		white-space: pre;
 		border: 2px solid var(--green);
 		padding: 0.5rem 1rem;
 		background: var(--windowFg);
 		color: var(--fontColorX);
 	}
-	#copy {
+
+	.bottom_btn {
 		margin: 0px auto auto auto;
 		color: #fff;
 		background: var(--green);
-		height: 4rem;
-		width: 45rem;
-		max-width: 90vmin;
+		height: 3.5rem;
 		font-size: 1.4rem;
 	}
-	#copy:hover { filter: brightness(1.1) }
-	#__notif { background: var(--green); color: #fff }
+	.bottom_btn:hover { filter: brightness(1.1) }
+
 	.badge { padding: 0.5rem 2rem; background: var(--blue); color: #fff }
+	#__notif { background: var(--green); color: #fff }
 	</style>
 </head>
 
 <body class='theme-light fh'>
 	<div id='__notif'></div>
 
-	<div class='i bounded'>
-		<div id='editor' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
+	<div class='i bounded w1-2' style='margin-bottom: 0'>
+		<div id='editor' class='w' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
 		<div class='badge abs rtop nosel nil'>INPUT: Rich Text</div>
 	</div>
 
-	<div class='i bounded' style='margin-bottom: 0'>
-		<div id='generated'></div>
+	<div class='abs w center pt nosel bottom_btn w1-2' style='background: var(--blue);'
+		onclick="wipe('editor')"><p>Clear</p></div>
+
+	<div class='i bounded w1-2' style='margin-bottom: 0'>
+		<div id='generated' class='w'></div>
 		<div class='badge abs rtop nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
 	</div>
 
-	<div id='copy' class='abs w center pt nosel'
+	<div class='abs w center pt nosel bottom_btn w1-2'
 		onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
 
 	<script>
@@ -100,6 +103,10 @@
 			.replaceAll(/([\n]?)+\n$/g, '')
 			.replace(/^[\n]+/g, '');
 		}
+		vport(
+			()=>{ css('one-half', '50%'); },
+			()=>{ css('one-half', '100%'); },
+		180);
 	}
 	</script>
 </body>
