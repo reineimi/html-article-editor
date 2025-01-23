@@ -82,7 +82,7 @@
 			// Remove artifacts
 			emi('generated').textContent = emi('editor').innerHTML
 			.replaceAll(/<span >/g, '')
-			.replaceAll(/<br[ ]?[\/]?>/g, '')
+			.replaceAll(/<br[ ]?[\/]?>/g, '<p></p>')
 			.replaceAll(/[ ]?style="[^>]+"/g, '')
 			.replaceAll(/<span[^>]+>/g, '')
 			.replaceAll('<span>', '')
