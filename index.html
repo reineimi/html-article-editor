@@ -82,7 +82,6 @@
 			// Remove artifacts
 			emi('generated').textContent = emi('editor').innerHTML
 			.replaceAll(/<span >/g, '')
-			.replaceAll(/<br[ ]?[\/]?>/g, '<p></p>')
 			.replaceAll(/[ ]?style="[^>]+"/g, '')
 			.replaceAll(/<span[^>]+>/g, '')
 			.replaceAll('<span>', '')
@@ -101,7 +100,8 @@
 			.replaceAll('<li>\n', '<li>')
 			.replaceAll('<li>', '\n<li>')
 			.replaceAll(/([\n]?)+\n$/g, '')
-			.replace(/^[\n]+/g, '');
+			.replace(/^[\n]+/g, '')
+			.replaceAll(/<br[ ]?[\/]?>/g, '<p></p>');
 		}
 		vport(
 			()=>{ css('one-half', '50%'); css('height', 'calc(95dvh - 3.5rem)'); },
