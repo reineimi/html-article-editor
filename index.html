@@ -101,7 +101,7 @@
 			.replaceAll('<li>', '\n<li>')
 			.replaceAll(/([\n]?)+\n$/g, '')
 			.replace(/^[\n]+/g, '')
-			.replaceAll(/<br[ ]?[\/]?>/g, '<p></p>');
+			.replaceAll(/<br[ ]?[\/]?>/g, '');
 		}
 		vport(
 			()=>{ css('one-half', '50%'); css('height', 'calc(95dvh - 3.5rem)'); },
