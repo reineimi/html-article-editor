@@ -59,13 +59,13 @@
 
 	<div class='m mt3 w1-2'>
 		<div id='editor' class='w' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
-		<div class='badge abs rtop nosel nil'>INPUT: Rich Text</div>
+		<div class='badge abs topr nosel nil'>INPUT: Rich Text</div>
 		<div class='abs w center pt nosel bottom_btn w1-2' style='background: var(--blue);' onclick="wipe('editor')"><p>Clear</p></div>
 	</div>
 
 	<div class='m mt3 w1-2'>
 		<div id='generated' class='w'></div>
-		<div class='badge abs rtop nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
+		<div class='badge abs topr nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
 		<div class='abs w center pt nosel bottom_btn w1-2' onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
 	</div>
 
