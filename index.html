@@ -4,8 +4,10 @@
 	<title>Va2: HTML Article Editor</title>
 	<meta name='description' content='Online HTML Article (Rich Text) Editor by @reineimi - https://github.com/reineimi' />
 	<meta name='keywords' content='reineimi, va2, article editor, online article editor, web editor, html editor, html rich text' />
+
 	<script src='https://reineimi.github.io/va2/lib/va2.js' async></script>
 	<link rel='stylesheet' href='https://reineimi.github.io/va2/lib/va2.css'>
+	<meta name='va2meta' content='{"ver": "1.4.38.156"}'>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,21 +57,17 @@
 <body class='theme-light fh'>
 	<div id='__notif'></div>
 
-	<div class='i bounded w1-2' style='margin-bottom: 0'>
+	<div class='m mt3 w1-2'>
 		<div id='editor' class='w' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
 		<div class='badge abs rtop nosel nil'>INPUT: Rich Text</div>
+		<div class='abs w center pt nosel bottom_btn w1-2' style='background: var(--blue);' onclick="wipe('editor')"><p>Clear</p></div>
 	</div>
 
-	<div class='abs w center pt nosel bottom_btn w1-2' style='background: var(--blue);'
-		onclick="wipe('editor')"><p>Clear</p></div>
-
-	<div class='i bounded w1-2' style='margin-bottom: 0'>
+	<div class='m mt3 w1-2'>
 		<div id='generated' class='w'></div>
 		<div class='badge abs rtop nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
+		<div class='abs w center pt nosel bottom_btn w1-2' onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
 	</div>
-
-	<div class='abs w center pt nosel bottom_btn w1-2'
-		onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
 
 	<script>
 	window.onload = ()=>{
