@@ -100,7 +100,9 @@
 			.replaceAll(/([\n]?)+\n$/g, '')
 			.replace(/^[\n]+/g, '')
 			.replaceAll(/<br[ ]?[\/]?>/g, '')
-			.replaceAll(/<div><\/div>$/g, '');
+			.replaceAll(/<div><\/div>$/g, '')
+			.replaceAll(/<[/]?fon[^>]+>/g, '')
+			.replaceAll(/[ ]?class="[^"]+"[ ]?/g, '');
 		}
 		vport(
 			()=>{ css('one-half', '50%'); css('height', 'calc(95dvh - 3.5rem)'); },
