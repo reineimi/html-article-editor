@@ -50,13 +50,10 @@
 	.bottom_btn:hover { filter: brightness(1.1) }
 
 	.badge { padding: 0.5rem 2rem; background: var(--blue); color: #fff }
-	#__notif { background: var(--green); color: #fff }
 	</style>
 </head>
 
 <body class='theme-light fh'>
-	<div id='__notif'></div>
-
 	<div class='m mt3 w1-2'>
 		<div id='editor' class='w' contenteditable='true' oninput="emi('generated').textContent = this.innerHTML"></div>
 		<div class='badge abs topr nosel nil'>INPUT: Rich Text</div>
@@ -66,7 +63,7 @@
 	<div class='m mt3 w1-2'>
 		<div id='generated' class='w'></div>
 		<div class='badge abs topr nosel nil' style='background: var(--green)'>OUTPUT: HTML</div>
-		<div class='abs w center pt nosel bottom_btn w1-2' onclick="copy(emi('generated').textContent); notify('Copied')"><p>Copy to clipboard</p></div>
+		<div class='abs w center pt nosel bottom_btn w1-2' onclick="copy(emi('generated').textContent); notify('Copied', 'green cwhite', {silent:1})"><p>Copy to clipboard</p></div>
 	</div>
 
 	<script>
